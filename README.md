@@ -6,7 +6,7 @@ brew install nasm
 
 
 #### 컴파일  
-nasm -f macho64 ft_strlen.s -o ft_strlen  
+nasm -f macho64 ft_strlen.s  
 
 
     옵션  
@@ -15,8 +15,9 @@ nasm -f macho64 ft_strlen.s -o ft_strlen
 
 
 #### 라이브러리화  
-ar rcs libasm.a ft_strlen  
+ar rcs libasm.a ft_strlen.o  
 
 
 #### main문과 컴파일  
-gcc libasm.a main.c -o libasm
+gcc libasm.a main.c  
+./a.out
