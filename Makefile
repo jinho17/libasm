@@ -12,10 +12,10 @@ $(NAME): $(OBJS)
 	ar cr $(NAME) $(OBJS)
 
 clean:
-	rm $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
