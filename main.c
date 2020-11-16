@@ -6,7 +6,7 @@
 /*   By: jinkim <jinkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 09:48:26 by jinkim            #+#    #+#             */
-/*   Updated: 2020/11/13 16:08:07 by jinkim           ###   ########.fr       */
+/*   Updated: 2020/11/16 16:22:16 by jinkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,62 @@ void check_strdup()
 	save2 = NULL;
 	printf("\n");
 
+	char *str = strdup("allo");
+	printf("%-20s: \"%s\"\n", "char *", str);
+	save = strdup(str);
+	printf("%-20s: \"%s\"\n", "libc", save);
+	free(save);
+	save = NULL;
+	save2 = ft_strdup(str);
+	printf("%-20s: \"%s\"\n", "libasm", save2);
+	free(save2);
+	save2 = NULL;
+	printf("\n");
+	free(str);
+	str = NULL;
+
+	str = strdup("allo tesszt");
+	printf("%-20s: \"%s\"\n", "char *", str);
+	save = strdup(str);
+	printf("%-20s: \"%s\"\n", "libc", save);
+	free(save);
+	save = NULL;
+	save2 = ft_strdup(str);
+	printf("%-20s: \"%s\"\n", "libasm", save2);
+	free(save2);
+	save2 = NULL;
+	printf("\n");
+	free(str);
+	str = NULL;
+
+	str = strdup("allo \0 mon bars");
+	printf("%-20s: \"%s\"\n", "char *", str);
+	save = strdup(str);
+	printf("%-20s: \"%s\"\n", "libc", save);
+	free(save);
+	save = NULL;
+	save2 = ft_strdup(str);
+	printf("%-20s: \"%s\"\n", "libasm", save2);
+	free(save2);
+	save2 = NULL;
+	printf("\n");
+	free(str);
+	str = NULL;
+
+	str = strdup("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus metus, finibus quis sagittis quis, volutpat a justo. Nunc et pellentesque quam. Fusce aliquam aliquam libero, sed pulvinar nullam.");
+	printf("%-20s: \"%s\"\n", "char *", str);
+	save = strdup(str);
+	printf("%-20s: \"%s\"\n", "libc", save);
+	free(save);
+	save = NULL;
+	save2 = ft_strdup(str);
+	printf("%-20s: \"%s\"\n", "libasm", save2);
+	free(save2);
+	save2 = NULL;
+	printf("\n");
+	free(str);
+	str = NULL;
+
 	// ------- NULL = SEGFAULT
 	// printf("%-20s: NULL\n", "char *");
 	// save = strdup(NULL);
@@ -268,10 +324,11 @@ void check_strdup()
 
 int main()
 {
-	/*
+	//strlen
     printf("strlen      %zu\n", strlen("hello"));
     printf("ft_strlen   %zu\n", ft_strlen("hello"));
 
+	//strcpy
     printf("\n");
     char dst[100];
     char src[] = "hello world";
@@ -280,39 +337,43 @@ int main()
     ft_strcpy(dst, src);
     printf("ft_strcpy   |%s|, rtn : |%s|\n", dst, ft_strcpy(dst, src));
 
+	//strcmp
     printf("\n");
 	char s1[] = "hello";
 	char s2[] = "hellob";
 	printf("strcmp		%d\n", strcmp(s1, s2));
 	printf("strcmp		%d\n", strcmp("hello", "hellob"));
 	printf("ft_strcmp	%d\n", ft_strcmp(s1, s2));
-
-
+	
+	//write
 	printf("\n");
 	printf("\n");
 	printf("|return : %zu|\n", write(-10, "hello", 0));
+	printf("|return : %zu|\n", ft_write(-10, "hello", 0));	
 	printf("|return : %zu|\n", write(10, "hello", -1));
+	printf("|return : %zu|\n", ft_write(10, "hello", -1));
+	/*
 	printf("\n");
-	printf("|return : %zu|\n", write(-10, "hello", 10));
 	printf("|return : %zu|\n", write(-1, "hello", 10));
 	printf("|return : %zu|\n", write(0, "hello", 10));
 	printf("|return : %zu|\n", write(1, "hello", 10));
 	printf("|return : %zu|\n", write(2, "hello", 10));
 	printf("|return : %zu|\n", write(3, "hello", 10));
-	printf("|return : %zu|\n", write(4, "hello", 10));
-	printf("|return : %zu|\n", write(10, "hello", 10));
-	printf("\n");
 	printf("|return : %zu|\n", write(-10, NULL, 10));
-	printf("\n\nft_write\n");
-	printf("|return : %zu|\n", ft_write(1, "hello", 10));*/
+	*/
+	printf("ft_write\n");
+	printf("|return : %zu|\n", write(1, "hello", 10));
+	printf("|return : %zu|\n", ft_write(1, "hello", 10));
 
+	printf("\n\n-----------------\n");
+	printf("|return : %zu|\n", write(1, "hello", -10));
+	printf("|return : %zu|\n", ft_write(1, "hello", -10));
 
-
-	/*
+	
     check_strlen();
     check_strcpy();
 	check_strcmp();
 	check_write();
-	check_read();*/
+	check_read();
 	check_strdup();
 }

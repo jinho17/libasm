@@ -19,8 +19,6 @@ fclean: clean
 
 re: fclean all
 
-#bonus:
-
 test: all
 	@gcc -L. -lasm main.c -o test_libasm
 	@./test_libasm
